@@ -1,9 +1,10 @@
 return {
-  "ellisonleao/gruvbox.nvim",
-  name = "gruvbox",
-  priority = 1000,
-  config = function()
-    require("gruvbox").setup({
+  {
+    "ellisonleao/gruvbox.nvim",
+    name = "gruvbox",
+    priority = 1000,
+    config = function()
+      require("gruvbox").setup({
         terminal_colors = true,
         undercurl = true,
         underline = false,
@@ -28,6 +29,60 @@ return {
         transparent_mode = true,
       })
 
-    vim.cmd.colorscheme("gruvbox")
+    -- vim.cmd.colorscheme("gruvbox")
   end
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+      require("catppuccin").setup({
+        flavour = "mocha", --latte, frappe, macchiato, mocha
+        transparent_background = true,
+        term_colors = true,
+        
+        styles = {
+          comments = { "italic" },
+          conditionals = { "italic" },
+          loops = {},
+          functions = {},
+          keywords = {},
+          strings = {},
+          variables = {},
+          numbers = {},
+          booleans = {},
+          properties = {},
+          types = {},
+          operators = {},
+        },
+
+        integrations = {
+          cmp = true,
+          treesitter = true,
+          mason = true,
+          telescope = {
+            enabled = true,
+          },
+          native_lsp = {
+            enabled = true,
+            virtual_text = {
+              errors = { "italic" },
+              hints = { "italic" },
+              warnings = { "italic" },
+              information = { "italic" },
+            },
+            underlines = {
+              errors = { "underline" },
+              hints = { "underline" },
+              warnings = { "underline" },
+              information = { "underline" },
+            },
+          },
+        },
+      })
+
+      vim.cmd.colorscheme("catppuccin")
+    end
+  }
 }
