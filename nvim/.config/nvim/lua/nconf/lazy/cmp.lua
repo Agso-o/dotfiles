@@ -25,10 +25,21 @@ return {
 
       mapping = cmp.mapping.preset.insert({
         ["<C-p>"] = cmp.mapping.select_prev_item(),
-        ["<C-n>"] = cmp.mapping.select_next_item(),
-        ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+        ["<Tab>"] = cmp.mapping.select_next_item(),
+        ["<Return>"] = cmp.mapping.confirm({ select = true }),
         ["<C-Space>"] = cmp.mapping.complete(),
       }),
+
+      window = {
+        completion = {
+          border = "rounded",
+          winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+        },
+        documentation = {
+          border = "rounded",
+          winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None",
+        },
+      },
 
       snippet = {
         expand = function(args)
@@ -36,17 +47,29 @@ return {
         end,
       },
       formatting = {
-        format = lspkind.cmp_format({
-          mode = "symbol_text",
-          maxwidth = 50,
-          ellipsis_char = "...",
-          menu = {
-            nvim_lsp = "[LSP]",
-            luasnip  = "[Snippet]",
-            path     = "[Path]",
-            buffer   = "[Buffer]",
-          }
-        })
+        fields = { "kind", "abbr", "menu" },
+        format = function(entry, vim_item)
+
+          local kind = lspkind.cmp_format({
+            mode = "symbol",
+            maxwidth = 50,
+            ellipsis_char = "...",
+          })(entry, vim_item)
+
+          kind.kind = " " .. (kind.kind or "") .. " "
+
+          local menu_name = ({
+            nvim_lsp = "LSP",
+            luasnip  = "Snippet",
+            path     = "Path",
+            buffer   = "Buffer",
+          })[entry.source.name]
+
+          kind.menu = "    [" .. (menu_name or "") .. "]"
+          
+          return kind 
+      end,
+        
       },
     })
   end,

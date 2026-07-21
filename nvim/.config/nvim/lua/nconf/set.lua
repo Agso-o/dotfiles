@@ -7,6 +7,8 @@ vim.opt.smartindent = true
 vim.opt.smarttab = true
 vim.opt.list = true
 vim.opt.listchars = "eol:.,tab:>-,trail:~,extends:>,precedes:<"
+vim.opt.pumheight = 5
+vim.opt.pumblend = 0
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -32,3 +34,4 @@ vim.opt.showmode = true
 
 -- No automatic comment insertion
 vim.cmd([[autocmd FileType * set formatoptions-=ro]])
+

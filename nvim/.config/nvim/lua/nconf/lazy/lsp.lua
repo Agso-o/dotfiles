@@ -21,7 +21,7 @@ return {
             [vim.diagnostic.severity.INFO]  = "󱀡 ",
           },
       },
-      underline = true,
+      underline = false,
       update_in_insert = false,
       severity_sort = true,
       float = {
@@ -38,18 +38,42 @@ return {
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Ir para o erro anterior" })
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Ir para o próximo erro" })
     vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { desc = "Ver erro detalhado" })
+    
+    vim.keymap.set("n", "K", function() 
+      vim.lsp.buf.hover({ border = "rounded" }) 
+    end, { desc = "Ver documentação" })
+
+    vim.keymap.set("n", "<C-k>", function() 
+      vim.lsp.buf.signature_help({ border = "rounded" }) 
+    end, { desc = "Ajuda da assinatura da função" })
 
     require("mason-lspconfig").setup({
       ensure_installed = {
         "clangd",
         "lua_ls",
         "rust_analyzer",
+        "gopls",
       },
 
       handlers = {
         function(server_name)
           require("lspconfig")[server_name].setup({
             capabilities = capabilities,
+          })
+        end,
+
+         gopls = function()
+          require("lspconfig").gopls.setup({
+            capabilities = capabilities,
+            settings = {
+              gopls = {
+                analyses = {
+                  unusedparams = true,
+                },
+                staticcheck = true,
+                gofumpt = true,
+              },
+            },
           })
         end,
 
