@@ -365,6 +365,10 @@ window-rule {
     }
 }
 
+window-rule {
+    match is-floating=true 
+    opacity 1.0
+}
 // Alt + Tab config
 recent-windows {
     open-delay-ms 150
