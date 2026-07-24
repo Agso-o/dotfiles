@@ -16,9 +16,9 @@ sudo pacman -S --needed \
     niri xwayland-satellite \
     xdg-desktop-portal-gnome \
     xdg-desktop-portal-gtk \
-    quickshell dms-shell \
+    quickshell dms-shell cliphist \
     qt5-base qt6-base dgop \
-    matugem papirus-icon-theme \
+    matugen papirus-icon-theme \
     starship ttf-jetbrains-mono
 
 if ! command -v yay &>/dev/null; then
@@ -42,8 +42,6 @@ stow fastfetch
 stow kitty
 stow niri
 stow nvim
-
-dms setup
 
 echo "-----Setting up Bashrc-----"
 echo "fastfetch" >> $HOME/.bashrc

@@ -89,7 +89,7 @@ output "eDP-1" {
     mode "1920x1080@120.030"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 2
+    scale 1
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -273,10 +273,9 @@ environment {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
 spawn-at-startup "xwayland-satellite"
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
-spawn-sh-at-startup "qs -c noctalia-shell"
+spawn-sh-at-startup "dms run"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -396,15 +395,6 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+A { show-hotkey-overlay; }
     Alt+Escape { spawn-sh "systemctl poweroff"; }
-    // Lançador
-    Mod+D hotkey-overlay-title="Abrir Launcher" { 
-        spawn "qs" "-c" "noctalia-shell" "ipc" "call" "launcher" "toggle"; 
-    }
-
-    // Bloquear a tela
-    Alt+L hotkey-overlay-title="Bloquear Tela" { 
-        spawn "qs" "-c" "noctalia-shell" "ipc" "call" "lockScreen" "lock"; 
-    }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
@@ -676,3 +666,9 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
+
+// DMS Include Configs
+include "dms/binds.kdl"
+include "dms/outputs.kdl"
+include "dms/windowrules.kdl"
+include "dms/layout.kdl"
