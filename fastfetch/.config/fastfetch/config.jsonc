@@ -4,9 +4,9 @@
         "source": "/home/agso/.config/fastfetch/art/n64.txt",
         "color": {},
         "padding": {
-            "top": 3,
+            "top": 6,
             "right": 0,
-            "left": 0
+            "left": 1
         }
     },
     "display": {
@@ -80,8 +80,13 @@
             "type": "terminal"
         },
         {
-            "key": "CPU         ",
+            "key": "Packages    ",
             "keyColor": "yellow",
+            "type": "packages"
+        },
+        {
+            "key": "CPU         ",
+            "keyColor": "green",
             "type": "cpu"
         },
         {
@@ -90,9 +95,33 @@
             "type": "gpu"
         },
         {
+            "key": "Disk        ",
+            "keyIcon": "󰉉",
+            "type": "disk",
+            "folders": "/"
+        },
+        {
             "key": "Memory      ",
             "keyColor": "magenta",
             "type": "memory"
+        },
+        {
+            "key": "SWAP        ",
+            "type": "swap",
+            "keyColor": "green",
+
+        },
+        {
+            "key": "Battery     ",
+            "type": "battery"
+        },
+        {
+            "key": "OS Age      ",
+            "type": "disk",
+            "keyColor": "yellow",
+            "keyIcon": "",
+            "folders": "/",
+            "format": "{create-time:10} [{days} days]"
         },
         {
             "key": "Local IP    ",
@@ -100,13 +129,13 @@
             "type": "localip",
             "compact": true
         },
-        {
+        /*{
             "key": "Public IP   ",
             "keyColor": "cyan",
             "type": "publicip",
             "timeout": 1000
         },
-        "break",
+        "break", */
         {
             "type": "custom",
             "format": "└{$1}────────────────────{$1}┘"
