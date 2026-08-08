@@ -38,7 +38,6 @@ return {
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Ir para o erro anterior" })
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Ir para o próximo erro" })
     vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, { desc = "Ver erro detalhado" })
-    
     vim.keymap.set("n", "K", function() 
       vim.lsp.buf.hover({ border = "rounded" }) 
     end, { desc = "Ver documentação" })

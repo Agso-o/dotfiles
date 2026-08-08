@@ -16,8 +16,8 @@ return {
       'python',
       'lua',
       'cpp',
-      -- 'vim',
-      -- 'vimdoc',
+      'vim',
+      'vimdoc',
       'c',
       'query',
       -- 'dart',
@@ -31,6 +31,11 @@ return {
         'typescript',
         'typescriptreact',
         'cpp',
+        'c',
+        'html',
+        'lua',
+        'python',
+        'vim',
       },
       callback = function()
         vim.treesitter.start()

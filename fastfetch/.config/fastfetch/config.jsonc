@@ -112,10 +112,6 @@
 
         },
         {
-            "key": "Battery     ",
-            "type": "battery"
-        },
-        {
             "key": "OS Age      ",
             "type": "disk",
             "keyColor": "yellow",
@@ -143,7 +139,7 @@
         "break",
         {
             "type": "colors",
-            "paddingLeft": 34,
+            "paddingLeft": 23,
             "symbol": "circle"
         }
     ]

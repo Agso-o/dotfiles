@@ -276,6 +276,7 @@ environment {
 spawn-at-startup "xwayland-satellite"
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 spawn-sh-at-startup "dms run"
+spawn-sh-at-startup "dsearch serve"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -394,7 +395,6 @@ binds {
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+A { show-hotkey-overlay; }
-    Alt+Escape { spawn-sh "systemctl poweroff"; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
@@ -672,3 +672,4 @@ include "dms/binds.kdl"
 include "dms/outputs.kdl"
 include "dms/windowrules.kdl"
 include "dms/layout.kdl"
+include "dms/cursor.kdl"
