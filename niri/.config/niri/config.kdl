@@ -70,6 +70,24 @@ input {
     focus-follows-mouse max-scroll-amount="0%"
 }
 
+overview {
+    // Adiciona uma cor escura levemente transparente (ex: 90 ou 20 no final)
+    // Isso cria um efeito "escurecido" sobre o seu wallpaper do DMS
+    backdrop-color "#00000090" 
+}
+// Diz ao Niri para fixar a interface principal do DMS no fundo do overview
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+
+// Se você usa o efeito de desfoque (blur) do DMS no overview, inclua esta:
+layer-rule {
+    match namespace="dms:blurwallpaper"
+    place-within-backdrop true
+}
+
+
 // You can configure outputs by their name, which you can find
 // by running `niri msg outputs` while inside a niri instance.
 // The built-in laptop monitor is usually called "eDP-1".
@@ -86,7 +104,7 @@ output "eDP-1" {
     // for the resolution.
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
-    mode "1920x1080@120.030"
+    mode "1920x1080@60.001"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
     scale 1
@@ -104,7 +122,7 @@ output "eDP-1" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=1280 y=0
+    position x=0 y=0
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -113,6 +131,7 @@ output "eDP-1" {
 layout {
     // Set gaps around windows in logical pixels.
     gaps 10
+    background-color "transparent"
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -274,6 +293,7 @@ environment {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "xwayland-satellite"
+spawn-at-startup "kanshi"
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 spawn-sh-at-startup "dms run"
 spawn-sh-at-startup "dsearch serve"
@@ -312,6 +332,14 @@ animations {
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://niri-wm.github.io/niri/Configuration:-Window-Rules
+
+// Vai gerenciar o compartilhamento de tela
+window-rule {
+    match app-id=r#"^at\.yrlf\.wl_mirror$"#
+    open-fullscreen true
+    draw-border-with-background false
+}
+
 
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
@@ -665,6 +693,15 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
+
+    //Projetor
+    // Trocar layout das telas
+    Mod+Alt+Left  { spawn "kanshictl" "switch" "hdmi-esquerda"; }
+    Mod+Alt+Right { spawn "kanshictl" "switch" "hdmi-direita"; }
+    Mod+Alt+Up    { spawn "kanshictl" "switch" "hdmi-cima"; }
+    Mod+Alt+Down  { spawn "kanshictl" "switch" "laptop"; }
+    Mod+Ctrl+P { spawn "kanshictl" "reload"; }
+
 }
 
 // DMS Include Configs

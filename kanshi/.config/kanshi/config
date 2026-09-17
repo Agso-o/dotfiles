@@ -1,0 +1,32 @@
+# ---------- Só o notebook ----------
+profile laptop {
+    output eDP-1 enable mode 1920x1080@60.001 scale 1 position 0,0
+}
+
+# ---------- HDMI ----------
+
+profile hdmi-direita {
+    output eDP-1    enable mode 1920x1080@60.001 scale 1 position 0,0
+    output HDMI-A-1 enable mode 1600x900@60.000 scale 1 position 1920,0
+}
+
+profile hdmi-esquerda {
+    output eDP-1    enable mode 1920x1080@60.001 scale 1 position 1600,0
+    output HDMI-A-1 enable mode 1600x900@60.000 scale 1 position 0,0
+}
+
+profile hdmi-cima {
+    output eDP-1    enable mode 1920x1080@60.001 scale 1 position 0,900
+    output HDMI-A-1 enable mode 1600x900@60.000 scale 1 position 0,0
+}
+
+# ---------- DisplayPort / USB-C ----------
+profile dp-direita {
+    output eDP-1 enable mode 1920x1080@60.001 scale 1 position 0,0
+    output DP-1  enable scale 1 position 1920,0
+}
+
+profile dp-esquerda {
+    output eDP-1 enable mode 1920x1080@60.001 scale 1 position 1920,0
+    output DP-1  enable scale 1 position 0,0
+}
