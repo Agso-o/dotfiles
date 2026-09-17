@@ -19,7 +19,8 @@ sudo pacman -S --needed \
     quickshell dms-shell cliphist \
     qt5-base qt6-base dgop \
     matugen papirus-icon-theme \
-    starship ttf-jetbrains-mono
+    starship ttf-jetbrains-mono \
+    wl-mirror kanshi jq
 
 if ! command -v yay &>/dev/null; then
     "------Instaling AUR helper (yay)-----"
