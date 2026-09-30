@@ -1,0 +1,19 @@
+// DMS Window Rules - Managed by DankMaterialShell
+// Do not edit manually - changes may be overwritten
+
+// @id=dms-floating-windows @name=DMS Floating Windows
+window-rule {
+    match app-id="^com.danklinux.dms$"
+    open-floating true
+}
+
+// @id=wr_1790728467003349640 @name=python3
+window-rule {
+    match app-id="^python3$" is-floating=true
+}
+
+// @id=wr_1790728512533960627 @name=python3
+window-rule {
+    match app-id="^python3$"
+    open-floating true
+}

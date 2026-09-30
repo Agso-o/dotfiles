@@ -297,6 +297,7 @@ spawn-at-startup "kanshi"
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 spawn-sh-at-startup "dms run"
 spawn-sh-at-startup "dsearch serve"
+spawn-sh-at-startup "sigaa-calendar --lib --tarefas"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
@@ -383,11 +384,16 @@ window-rule {
     clip-to-geometry true
 }
 
+window-rule {
+    match app-id=r#"^org.gnome.Calculator$"#
+    open-floating true
+}
+
 /-window-rule {
     match is-active=false
-    opacity 0.7
+    opacity 0.8
     background-effect {
-        blur false
+        blur true
         noise 0
         saturation 1
     }
